@@ -20,7 +20,7 @@ export function App() {
 
         <div className="flex items-center gap-3">
           <span className="text-sm text-muted-foreground">
-            Desenvolvido com 💜 no NLW da Rocketseat
+            Developped with 💜 in NLW event
           </span>
 
           <Separator orientation="vertical" className="h-6" />
@@ -47,10 +47,9 @@ export function App() {
           </div>
 
           <p className="text-sm text-muted-foreground">
-            Lembre-se: você pode utilizar a variável{" "}
-            <code className="text-violet-400">{`{transcription}`}</code> no seu
-            prompt para adicionar o conteúdo da transcrição do vídeo
-            selecionado.
+            Reminder: You can use a variable{" "}
+            <code className="text-violet-400">{`{transcription}`}</code> in your
+            prompt to add selected video transcription content.
           </p>
         </div>
 
@@ -61,7 +60,7 @@ export function App() {
               className="border flex rounded-md aspect-video cursor-pointer border-dashed text-sm flex-col gap-2 items-center justify-center text-muted-foreground hover:bg-primary/5"
             >
               <FileVideo className="w-4 h-4" />
-              Selecione um vídeo
+              Select a video
             </label>
 
             <input
@@ -74,9 +73,7 @@ export function App() {
             <Separator />
 
             <div className="space-y-2">
-              <Label htmlFor="transcription_prompt">
-                Prompt de transcrição
-              </Label>
+              <Label htmlFor="transcription_prompt">Transcription prompt</Label>
               <Textarea
                 id="transcription_prompt"
                 className="h-20 leading-relaxed resize-none"
@@ -85,7 +82,7 @@ export function App() {
             </div>
 
             <Button type="submit" className="w-full">
-              Carregar video
+              Load video
               <Upload className="w-4 h-4 ml-2" />
             </Button>
           </form>
@@ -100,16 +97,16 @@ export function App() {
                   <SelectValue placeholder="Selecione um prompt..." />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="title">Título do YouTube</SelectItem>
+                  <SelectItem value="title">Youtube title</SelectItem>
                   <SelectItem value="description">
-                    Descrição do YouTube
+                    Youtube Description
                   </SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <Label>Modelo</Label>
+              <Label>Model</Label>
               <Select disabled defaultValue="gpt3.5">
                 <SelectTrigger>
                   <SelectValue />
@@ -119,25 +116,24 @@ export function App() {
                 </SelectContent>
               </Select>
               <span className="block text-sm text-muted-foreground italic">
-                Você poderá customizar essa opção em breve
+                You'll be able to customize it soon
               </span>
             </div>
 
             <Separator />
 
             <div className="space-y-4">
-              <Label>Temperatura</Label>
+              <Label>Range</Label>
               <Slider min={0} max={1} step={0.1} />
               <span className="block text-sm text-muted-foreground italic leading-relaxed">
-                Valores mais altor tendem a deixar o resultado mais criativo e
-                com possíveis erros.
+                Higher values implies on more criative results.
               </span>
             </div>
 
             <Separator />
 
             <Button type="submit" className="w-full">
-              Executar
+              Run
               <Wand2 className="w-4 h-4 ml-2" />
             </Button>
           </form>
