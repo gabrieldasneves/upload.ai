@@ -15,8 +15,6 @@ export async function createTranscriptionRoute(app: FastifyInstance) {
       prompt: z.string(),
     });
 
-    const {} = bodySchema.parse(req.body);
-
     const { prompt } = bodySchema.parse(req.body);
 
     const video = await prisma.video.findUniqueOrThrow({
@@ -26,11 +24,10 @@ export async function createTranscriptionRoute(app: FastifyInstance) {
     });
 
     const videoPath = video.path;
-
-    const audioreadStream = createReadStream(videoPath);
+    const audioReadStream = createReadStream(videoPath);
 
     const response = await openai.audio.transcriptions.create({
-      file: audioreadStream,
+      file: audioReadStream,
       model: "whisper-1",
       language: "pt",
       response_format: "json",
@@ -38,15 +35,19 @@ export async function createTranscriptionRoute(app: FastifyInstance) {
       prompt,
     });
 
+    const transcription = response.text;
+
     await prisma.video.update({
       where: {
         id: videoId,
       },
       data: {
-        transcription: response.text,
+        transcription,
       },
     });
 
-    return response.text;
+    return {
+      transcription,
+    };
   });
 }

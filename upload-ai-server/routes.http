@@ -17,9 +17,21 @@ Content-Type: audio/mpeg
 ###
 
 # @name create-transcription
-POST http://localhost:3333/videos/48e4d78f-ec1c-47f6-8f40-703aef126974/transcription
+POST http://localhost:3333/videos/461f4505-456b-4881-ab71-c4df45d85a11/transcription
 Content-Type: application/json
 
 {
-  "prompt": "clean architecture, ddd"
+  "prompt": "sorte,avião"
+}
+
+###
+
+# @name generate-ai-completion
+POST http://localhost:3333/ai/complete
+Content-Type: application/json
+
+{
+  "videoId": "c1f7ea21-4c7f-4bc7-88ec-0dc7aeb4cea2",
+  "temperature": 0.5,
+  "template":"Gere um resumo sucinto da transcricao do video informado a seguir: '''{transcription} '''"
 }
